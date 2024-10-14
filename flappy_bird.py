@@ -14,7 +14,7 @@ import neat
 #import visualize
 import pickle
 pygame.font.init()  # init font
-# minuut 7.54
+
 
 WIN_WIDTH = 600
 WIN_HEIGHT = 800
@@ -282,7 +282,8 @@ def draw_window(win, birds, pipes, base, score, gen, pipe_ind):
 
     base.draw(win)
     for bird in birds:
-        # draw lines from bird to pipe
+        # draw lines from bird to
+        #26. Deze regels zorgen ervoor dat de vogel wordt getekend
         if DRAW_LINES:
             try:
                 pygame.draw.line(win, (255,0,0), (bird.x+bird.img.get_width()/2, bird.y + bird.img.get_height()/2), (pipes[pipe_ind].x + pipes[pipe_ind].PIPE_TOP.get_width()/2, pipes[pipe_ind].height), 5)
@@ -433,7 +434,7 @@ def eval_genomes(genomes, config):
             pickle.dump(nets[0],open("best.pickle", "wb"))
             break'''
 
-        if score > 25:
+        if score >= 25:
             run = False
     
     #18. Hier hebben we pygame.quit() weggehaald, omdat we dit niet nodig hebben.
@@ -477,7 +478,8 @@ if __name__ == '__main__':
     # here so that the script will run successfully regardless of the
     # current working directory.
     local_dir = os.path.dirname(__file__)
-    config_path = os.path.join(local_dir, 'config-feedforward.txt')
+    config_path = os.path.join(local_dir, 'config-feedforward.py')
+    #27. Verander config-feedforward.txt in config-feedforward.py, zodat het goeie config wordt gekoppeld
     run(config_path)
     #1. We hebben deze functie erbij gedaan, zodat er een connectie is tussen deze code en de config-feedforward.
     pygame.quit()
